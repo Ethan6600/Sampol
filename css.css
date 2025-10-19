@@ -1,0 +1,496 @@
+/**
+ * COMPLETE Enhanced CSS for CDRRMO Dispatch System
+ * All styles consolidated here - no inline styles in other files
+ */
+
+/* ==================== ENHANCED ROOT VARIABLES ==================== */
+:root {
+    --sidebar-width: 260px;
+    --topbar-height: 0px;
+    --hero-height: 200px;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #3b82f6;
+    --primary-color: #1a4d8c;
+}
+
+/* Global Styles & Typography - Enhanced Readability (1D: Words) */
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #334155;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ==================== ENHANCED LAYOUT COMPONENTS ==================== */
+
+/* Enhanced Header Styles */
+.top-bar {
+    display: flex;
+    position: fixed;
+    left: var(--sidebar-width);
+    top: 0;
+    right: 0;
+    height: 70px;
+    background: white;
+    z-index: 1045;
+    align-items: center;
+    padding: 0 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.page-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin: 0;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+}
+
+.top-bar-right {
+    margin-left: auto;
+}
+
+.top-bar-widgets {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.time-widget, .user-widget {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.role-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+}
+
+.global-controls {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 0;
+}
+
+/* Enhanced Footer Styles */
+footer {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5364 100%);
+    color: white;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-brand {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.footer-info {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer-meta {
+    margin-bottom: 0.5rem;
+}
+
+.footer-stats {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ==================== ENHANCED UI COMPONENTS ==================== */
+
+/* Enhanced Card Design (2D: Visual Representations) */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    overflow: hidden;
+}
+
+.card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Form Controls (3D: Physical Objects/Space) */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.2s ease;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 77, 140, 0.1);
+    outline: none;
+}
+
+/* Enhanced Buttons with Better Affordance */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* Enhanced Tables with Better Data Visualization */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+.table thead th {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5364 100%);
+    font-weight: 600;
+    color: white;
+    border-bottom: none;
+    padding: 1rem 1.25rem;
+    position: sticky;
+    top: 0;
+}
+
+/* ==================== ENHANCED INTERACTION COMPONENTS ==================== */
+
+/* Search and Filter Components */
+.search-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.search-box .form-control {
+    padding-left: 2.5rem;
+    border-radius: 25px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+}
+
+.filter-bar {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+/* Bulk Actions Panel */
+.bulk-actions {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.bulk-actions.show {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.quick-action-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Status Badges with Icons */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Loading States */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: inherit;
+}
+
+/* Empty States */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #64748b;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Export Controls */
+.export-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.export-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* ==================== DISPATCH-SPECIFIC STYLES ==================== */
+
+.resource-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.quick-status-btn {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+}
+
+.timeline-info {
+    font-size: 0.85rem;
+}
+
+.resource-info {
+    font-size: 0.85rem;
+}
+
+.field-error {
+    font-size: 0.8rem;
+    color: var(--danger-color);
+}
+
+/* ==================== TOAST & NOTIFICATION STYLES ==================== */
+
+#enhancedToast {
+    background: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.toast-icon {
+    font-size: 0.8rem;
+}
+
+/* Loading overlay enhancements */
+.loading-overlay-global {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-message {
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+/* Animation for Success States (5D: Behavior) */
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.success-pulse {
+    animation: successPulse 0.6s ease;
+}
+
+/* Progress Indicators (4D: Time) */
+.progress-indicator {
+    width: 100%;
+    height: 3px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+    transition: width 0.3s ease;
+}
+
+/* Real-time Update Indicators */
+.realtime-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 768px) {
+    .top-bar {
+        left: 0;
+        padding: 0 1rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .top-bar-widgets {
+        display: none;
+    }
+    
+    .global-controls {
+        padding: 1rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .quick-actions {
+        flex-wrap: wrap;
+    }
+    
+    .export-controls {
+        flex-wrap: wrap;
+    }
+    
+    .bulk-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .action-buttons .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    footer {
+        text-align: center;
+        padding: 1.5rem 0;
+    }
+    
+    .footer-meta, .footer-stats {
+        text-align: center !important;
+    }
+}
+
+/* Print Enhancements */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .table {
+        font-size: 0.8rem;
+    }
+}

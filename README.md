@@ -1,2 +1,1 @@
-# Sampol
-Naa diay
+# capstone-project
